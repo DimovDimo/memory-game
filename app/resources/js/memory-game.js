@@ -1,3 +1,4 @@
+const hexSymbols = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
 const countItems = 9;
 const typeGameItem = "div";
 const gameId = "game";
@@ -32,5 +33,18 @@ function setStyle(item) {
 }
 
 function setColor(item) {
-    item.style.background = "blue"; //TODO
+    item.style.background = getPseudoRandomHexColorCode();
+}
+
+function getPseudoRandomHexColorCode() {
+    let result = "";
+    for (let i = 0; i < 6; i++) {
+        result += getPseudoRandomHexSymbol();
+    }
+
+    return "#" + result;
+}
+
+function getPseudoRandomHexSymbol() {
+    return hexSymbols[Math.floor(Math.random() * hexSymbols.length)];;
 }
