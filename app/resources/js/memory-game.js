@@ -23,7 +23,7 @@ function addItemsTest() {
         }
     }
 
-    // TODO: random colors order
+    fisherYatesShuffle(colors);
 
     let items = [];
     for (let index = 0; index < countItems; index++) {
@@ -78,4 +78,17 @@ function getPseudoRandomHexColorCode() {
 
 function getPseudoRandomHexSymbol() {
     return hexSymbols[Math.floor(Math.random() * hexSymbols.length)];;
+}
+
+function fisherYatesShuffle(arrInput) {
+    let current = arrInput.length;
+    let random = 0;
+
+    while (current !== 0) {
+        random = Math.floor(current * Math.random());
+        current = current - 1;
+        let transitional = arrInput[current];
+        arrInput[current] = arrInput[random];
+        arrInput[random] = transitional;
+    }
 }
