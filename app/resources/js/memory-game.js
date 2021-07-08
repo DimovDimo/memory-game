@@ -1,4 +1,4 @@
-const hexSymbols = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
+let hexSymbols = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
 const countItems = 9;
 const sameColors = 2;
 const typeGameItem = "div";
@@ -13,7 +13,7 @@ function addItemsTest() {
     let colors = [];
     let uniqueColors = Math.ceil(countItems / sameColors);
     for (let index = 0; index < uniqueColors; index++) {
-        let newColor = getPseudoRandomHexColorCode();
+        let newColor = randomHexColorCode();
         if (!colors.includes(newColor)) {
             for (let indexUniqueColors = 0; indexUniqueColors < sameColors; indexUniqueColors++) {
                 colors.push(newColor);
@@ -67,17 +67,10 @@ function setColor(item, color) {
     item.style.background = color;
 }
 
-function getPseudoRandomHexColorCode() {
-    let result = "";
-    for (let i = 0; i < 6; i++) {
-        result += getPseudoRandomHexSymbol();
-    }
+function randomHexColorCode() {
+    fisherYatesShuffle(hexSymbols);
 
-    return "#" + result;
-}
-
-function getPseudoRandomHexSymbol() {
-    return hexSymbols[Math.floor(Math.random() * hexSymbols.length)];;
+    return "#" + hexSymbols.slice(0, 6).join("");
 }
 
 function fisherYatesShuffle(arrInput) {
