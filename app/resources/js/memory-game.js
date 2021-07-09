@@ -29,7 +29,10 @@ function addItemsTest() {
     for (let index = 0; index < countItems; index++) {
         let item = document.createElement(typeGameItem);
         setStyle(item);
-        setColor(item, colors[index]); // TODO: color text
+        setColor(item, colors[index]);
+        let colorName = document.createElement("span");
+        colorName.innerText = colors[index];
+        item.appendChild(colorName);
         items.push(item);
     }
 

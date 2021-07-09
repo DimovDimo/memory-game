@@ -1,3 +1,9 @@
 body {
     text-align: center;
 }
+
+span {
+    background: white;
+    padding: 3px;
+    position: relative;
+}
