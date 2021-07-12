@@ -4,6 +4,10 @@ const sameColors = 2;
 const typeGameItem = "div";
 const gameId = "game";
 let game = document.getElementById(gameId);
+const memoryItemClass = "memory-item";
+const hideId = "hide";
+
+document.getElementById(hideId).addEventListener("click", hide);
 
 document.body.onload = addItems;
 
@@ -72,10 +76,16 @@ function setStyle(item, colors, index) {
     item.style.height = "100px";
     item.style.display = "inline-block";
     item.style.background = colors[index];
+    item.classList.add(memoryItemClass);
+    item.id = colors[index];
 }
 
 function setColorName(colors, index, item) {
     let colorName = document.createElement("span");
     colorName.innerText = colors[index];
     item.appendChild(colorName);
+}
+
+function hide() {
+    let items = document.getElementsByClassName(memoryItemClass);
 }
