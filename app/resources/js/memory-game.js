@@ -6,6 +6,8 @@ const gameId = "game";
 let game = document.getElementById(gameId);
 const memoryItemClass = "memory-item";
 const hideId = "hide";
+const hideColor = "#C5C5C5";
+const hideText = "?";
 
 document.getElementById(hideId).addEventListener("click", hide);
 
@@ -87,5 +89,14 @@ function setColorName(colors, index, item) {
 }
 
 function hide() {
-    let items = document.getElementsByClassName(memoryItemClass);
+    let items = Array.from(document.getElementsByClassName(memoryItemClass));
+    items.forEach(item => hideStyle(item));
+}
+
+function hideStyle(item) {
+    item.style.background = hideColor;
+    let children = item.childNodes;
+    children.forEach(child => {
+        child.innerText = hideText;
+    });
 }
