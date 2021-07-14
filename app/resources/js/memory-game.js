@@ -5,11 +5,13 @@ const typeGameItem = "div";
 const gameId = "game";
 let game = document.getElementById(gameId);
 const memoryItemClass = "memory-item";
+const displayId = "display";
 const hideId = "hide";
 const hideColor = "#C5C5C5";
 const hideText = "?";
 
-document.getElementById(hideId).addEventListener("click", hide);
+document.getElementById(displayId).addEventListener("click", displayAll);
+document.getElementById(hideId).addEventListener("click", hideAll);
 
 document.body.onload = addItems;
 
@@ -88,15 +90,29 @@ function setColorName(colors, index, item) {
     item.appendChild(colorName);
 }
 
-function hide() {
+function hideAll() {
     let items = Array.from(document.getElementsByClassName(memoryItemClass));
-    items.forEach(item => hideStyle(item));
+    items.forEach(item => hideItem(item));
 }
 
-function hideStyle(item) {
+function hideItem(item) {
     item.style.background = hideColor;
     let children = item.childNodes;
     children.forEach(child => {
         child.innerText = hideText;
+    });
+}
+
+function displayAll() {
+    let items = Array.from(document.getElementsByClassName(memoryItemClass));
+    items.forEach(item => displayItem(item));
+}
+
+function displayItem(item) {
+    let color = item.id;
+    item.style.background = color;
+    let children = item.childNodes;
+    children.forEach(child => {
+        child.innerText = color;
     });
 }
